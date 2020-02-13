@@ -1,43 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/device_id_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="Id czujnika"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintLeft_toRightOf="@id/device_id_label"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="deviceId" />
+        <variable
+            name="viewmodel"
+            type="pl.snifter.jahuhr.MainActivityViewModel" />
+    </data>
 
-    <TextView
-        android:id="@+id/alert_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:text="Alarm powyżej"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/device_id_label" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        app:layout_constraintLeft_toRightOf="@id/alert_label"
-        app:layout_constraintTop_toBottomOf="@+id/device_id_label"
-        tools:text="123" />
+        <TextView
+            android:id="@+id/device_id_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Id czujnika"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:layout_constraintLeft_toRightOf="@id/device_id_label"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="deviceId"
+            android:text="@{viewmodel.deviceId()}"/>
+
+        <TextView
+            android:id="@+id/alert_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Alarm powyżej"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/device_id_label" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            app:layout_constraintLeft_toRightOf="@id/alert_label"
+            app:layout_constraintTop_toBottomOf="@+id/device_id_label"
+            tools:text="123"
+            android:text="@{viewmodel.alertThreshold()}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
