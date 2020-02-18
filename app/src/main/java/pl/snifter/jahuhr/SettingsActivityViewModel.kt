@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 
-class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
+class SettingsActivityViewModel(application: Application) : AndroidViewModel(application) {
     private val settings = JahuSettings(application)
 
     private val deviceId: MutableLiveData<String> by lazy {
@@ -20,17 +20,11 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
         }
     }
 
-    val openSettings = MutableLiveData<String>()
-
     fun deviceId(): LiveData<String> {
         return deviceId
     }
 
     fun alertThreshold(): LiveData<String> {
         return alertThreshold
-    }
-
-    fun openSettings() {
-        openSettings.value = "Go"
     }
 }

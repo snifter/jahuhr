@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import pl.snifter.jahuhr.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +16,11 @@ class MainActivity : AppCompatActivity() {
 
         val binding =
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
-        // Bind layout with ViewModel
         binding.viewmodel = model
-
-        // LiveData needs the lifecycle owner
         binding.lifecycleOwner = this
+
+        model.openSettings.observe(this, Observer {
+            SettingsActivity.open(this)
+        })
     }
 }
